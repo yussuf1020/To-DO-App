@@ -1,6 +1,8 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+    id("kotlin-kapt")
+    id("com.google.dagger.hilt.android")
 }
 
 android {
@@ -66,4 +68,21 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+
+    //Room components
+    implementation(libs.androidx.room.runtime)
+    kapt(libs.room.compiler)
+    implementation(libs.androidx.room.ktx)
+
+
+    //DataStore Preference
+    implementation(libs.androidx.datastore.preferences)
+
+    //Dagger-Hilt
+    implementation(libs.dagger.hilt.android)
+    kapt(libs.hilt.android.compiler)
+
+}
+kapt {
+    correctErrorTypes = true
 }
